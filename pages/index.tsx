@@ -1,7 +1,7 @@
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import { useAccount, usePrepareContractWrite, useContractWrite, useContractRead } from 'wagmi'
-import abi from '../pages/abi/hlgns.json';
+import abi from '../pages/abi/flwrs.json';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import Web3 from "web3";
@@ -20,7 +20,7 @@ const Home: NextPage = () => {
 
 
    const { config } = usePrepareContractWrite({
-      address: "0x3664CCec2ce76e2921A6f479882baeB4ada4D6A9",
+      address: "0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D",
       abi,
      
     })
@@ -135,7 +135,7 @@ const togglePlay = () => {
   }
 };
 
-  const videoUrl = "https://itsnota.club/hlgns/bg-rain.mp4";
+  const videoUrl = "none";
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -155,8 +155,8 @@ const togglePlay = () => {
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
   <link rel="icon" type="image/png" href="https://itsnota.club/imgs/favicon.png" />
-  <title>THOSE DAMN HOOLIGANS</title>
-  <meta name="description" content="Those Damn Hooligans" />
+  <title>POLLINATORS</title>
+  <meta name="description" content="Pollinators NFT & Flower Banners" />
   <div className="loader-wrapper">
     <div className="bar-container">
       <div className="bar" />
@@ -166,7 +166,7 @@ const togglePlay = () => {
   <center>
   
   <div className="main">
-  <h1>{totalMinted} / 420</h1>
+  <h1>{totalMinted} / 1333</h1>
   {mounted && isConnected && address &&(
     <button 
     className='button-12'
@@ -202,7 +202,7 @@ const togglePlay = () => {
       )}
 
 <br />
-<p>Connect to mint or try <a href="https://mint.fun/0x3664ccec2ce76e2921a6f479882baeb4ada4d6a9" target="_blank" rel="noreferrer">mint.fun</a> 
+<p>Mint on <a href="https://www.scatter.art/flower-banners" target="_blank" rel="noreferrer">Scatter.art</a> 
 <br/> </p>
 
 
