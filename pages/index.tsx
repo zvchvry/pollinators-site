@@ -169,7 +169,7 @@ const togglePlay = () => {
   <h1>{totalMinted} / 1333</h1>
   {mounted && isConnected && address &&(
     <button 
-    className='button-12'
+    className='button'
     onClick={() => onMintClick?.()}
     >
       Mint Ξ0.01
@@ -178,7 +178,7 @@ const togglePlay = () => {
   )}
   {mounted && isConnected && address &&(
     <button 
-    className='button-12'
+    className='button'
     onClick={() => onAllowMintClick?.()}
     >
       Allow List
