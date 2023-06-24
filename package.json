@@ -13,7 +13,7 @@
     "@rainbow-me/rainbowkit": "^0.12.9",
     "@vercel/analytics": "^1.0.0",
     "ethers": "^5.7.2",
-    "next": "^12.3.4",
+    "next": "^13.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "usehooks-ts": "^2.9.1",
