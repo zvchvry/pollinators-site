@@ -5,7 +5,7 @@ body{
   background-color: #202020;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
-  background-image: url("https://itsnota.club/pllntrs/web-bg.png") no-repeat center center fixed;
+  background-image: url("https://itsnota.club/pllntrs/web-bg.png");
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
