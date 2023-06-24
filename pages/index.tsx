@@ -213,14 +213,14 @@ const togglePlay = () => {
       className="mintLinks"
       
     >
-      <a href="https://opensea.io/collection/those-damn-hooligans" target="_blank" rel="noreferrer">
+      <a href="https://opensea.io/collection/flower-banners" target="_blank" rel="noreferrer">
         <img
           src="https://itsnota.club/imgs/opensea.svg"
           style={{ width: 25, margin: 15 }}
           alt="OpenSea"
         />
       </a>
-      <a href="https://twitter.com/itsnotaclub" target="_blank" rel="noreferrer">
+      <a href="https://twitter.com/Pollinators_NFT" target="_blank" rel="noreferrer">
         <img
           src="https://itsnota.club/imgs/twitter-logo.png"
           style={{ width: 25, margin: 15 }}
@@ -228,7 +228,7 @@ const togglePlay = () => {
         />
       </a>
       <a
-        href="https://etherscan.io/address/0x3664CCec2ce76e2921A6f479882baeB4ada4D6A9"
+        href="https://etherscan.io/address/0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D"
         target="_blank"
         rel="noreferrer"
       >
