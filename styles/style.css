@@ -32,16 +32,15 @@ a {
 text-decoration: underline;
 }
 .main {
-  border-radius: var(--border-radius);
-  background: linear-gradient(-67deg, rgba(#c8d8e7, .7), rgba(255,255,255,.8));
-  overflow: hidden;
-  box-shadow: 
-    -2px -2px 6px rgba(#fff, .6),
-    2px 2px 12px #c8d8e7;
-
-  padding: 16px 16px;
-  background-color: #e2e9f4;
-  border-radius: var(--border-radius);
+border-radius: var(--border-radius);
+background: linear-gradient(-67deg, rgba(#c8d8e7, .7), rgba(255,255,255,.8));
+overflow: hidden;
+box-shadow: 
+  -2px -2px 6px rgba(#fff, .6),
+  2px 2px 12px #c8d8e7;
+width: 50%;
+padding: 16px 16px;
+border-radius: var(--border-radius);
 }
 
 .mintLinks{
@@ -53,36 +52,22 @@ text-decoration: underline;
 
 
 .button {
-  align-items: center;
-  background: #f5f5fa;
-  border: 0;
-  border-radius: 50px;
-  box-shadow: -10px -10px 30px 0 #fff,10px 10px 30px 0 #1d0dca17;
-  box-sizing: border-box;
-  color: #2a1f62;
-  cursor: pointer;
-  display: flex;
-  font-family: "Cascadia Code",Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;
-  font-size: 1rem;
-  justify-content: center;
-  line-height: 1.5rem;
-  padding: 15px;
-  position: relative;
-  text-align: left;
-  transition: .2s;
-  user-select: none;
-  -webkit-user-select: none;
-  touch-action: manipulation;
-  white-space: pre;
-  width: max-content;
-  word-break: normal;
-  word-spacing: normal;
-  margin: 3px;
+  width: 150px;
+	height: 50px;
+	cursor: pointer;
+	background: #333;
+	margin: 10px;
+	border: none;
+	border-radius: 10px;
+	box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;
+	color: #222;
+	font-size: 16px;
 }
 
 .button:hover {
-  background: #f8f8ff;
-  box-shadow: -15px -15px 30px 0 #fff, 15px 15px 30px 0 #1d0dca17;
+  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222, inset -5px -5px 10px #444;
+	font-size: 15px;
+	transition: 500ms;
 }
 
 
