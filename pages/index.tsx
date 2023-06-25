@@ -4,7 +4,6 @@ import abi from '../pages/abi/flwrs.json';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import { ethers } from 'ethers';
-import Web3 from 'web3';
 
 
 const Home: NextPage = () => {
@@ -17,9 +16,8 @@ const Home: NextPage = () => {
 
 
    
-  const web3 = new Web3(Web3.givenProvider || "ws://localhost:3000");
-
-  const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+   
+  const provider = typeof window !== 'undefined' ? new ethers.providers.Web3Provider(window.ethereum, "any") : null;
   const address = "0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D" //
     
     const { config } = usePrepareContractWrite({
