@@ -1,5 +1,5 @@
 {
-  "name": "squish-site",
+  "name": "pollinators-site",
   "private": true,
   "version": "0.1.0",
   "scripts": {
@@ -10,15 +10,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@rainbow-me/rainbowkit": "^0.12.9",
-    "@vercel/analytics": "^1.0.0",
+    "@rainbow-me/rainbowkit": "^0.12.15",
+    "@vercel/analytics": "^1.0.1",
     "ethers": "^5.7.2",
     "next": "^13.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "usehooks-ts": "^2.9.1",
-    "wagmi": "^0.12.12",
-    "web3": "^1.9.0"
+    "wagmi": "^0.12.17",
+    "web3": "^1.10.0"
   },
   "devDependencies": {
     "@types/node": "17.0.45",
