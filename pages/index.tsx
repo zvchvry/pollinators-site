@@ -1,12 +1,10 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import type { NextPage } from 'next';
 import { useAccount, usePrepareContractWrite, useContractWrite, useContractRead } from 'wagmi'
 import abi from '../pages/abi/flwrs.json';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
-import Web3 from "web3";
 import { ethers } from 'ethers';
-import { useDebounce } from 'usehooks-ts'
+import Web3 from 'web3';
 
 
 const Home: NextPage = () => {
@@ -14,97 +12,124 @@ const Home: NextPage = () => {
   React.useEffect(() => setMounted(true), []);
 
   const [totalMinted, setTotalMinted] = React.useState(0);
-  const { isConnected, address } = useAccount();
-  const payableAmount = useDebounce(0.01)
-  const payableAmountAllow = useDebounce(0)
+  const { isConnected } = useAccount();
+  
 
 
-   const { config } = usePrepareContractWrite({
-      address: "0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D",
+   
+  const web3 = new Web3(Web3.givenProvider || "ws://localhost:3000");
+
+  const provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+  const address = "0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D" //
+    
+    const { config } = usePrepareContractWrite({
+      address,
       abi,
      
     })
-    const maxGas = ethers.BigNumber.from(200000);
-
-    const { config: preMint } = usePrepareContractWrite({
-      ...config,
-      functionName: 'publicMint',
-      overrides: {
-        value: ethers.utils.parseEther(payableAmount.toString()),
-        gasLimit: maxGas,
-      },
-      
-
-    })
-    const { config: preAllowMint } = usePrepareContractWrite({
-      ...config,
-      functionName: 'allowListMint',
-      overrides: {
-        value: ethers.utils.parseEther(payableAmountAllow.toString()),
-        gasLimit: maxGas,
-      },
-      
-
-    })
-
-const [mintLoading, setMintLoading] = useState(false);
-const [mintedTokenId, setMintedTokenId] = useState<number>();
-
-
-const { writeAsync: mint, error: mintError } = useContractWrite({
-  ...preMint,
-  
-});
-const { writeAsync: allowMint, error: allowMintError } = useContractWrite({
-  ...preAllowMint,
-  
-});
-
-const onMintClick = async () => {
-  try {
-    setMintLoading(true);
-    if (!mint) {
-      throw new Error('mint function is not defined');
+    const contract = {
+      address: address,
+      abi: abi,
+    };
+    
+    async function connect() {
+      await provider.send("eth_requestAccounts", []);
+      const signer = provider.getSigner();
+      //let userAddress = await signer.getAddress();
+      return signer;
     }
-    const tx = await mint();
-    const receipt = await tx.wait();
-    console.log('TX receipt', receipt);
-    // @ts-ignore
-    const mintedTokenId = await receipt.events[0].args[2].toString();
-    setMintedTokenId(mintedTokenId);
-  } catch (error) {
-    console.error(error);
-    if (mintError) {
-      console.error(mintError);
+    
+    async function getMaxQuantity() {
+      const signer = await connect();
+      if (provider === null) {
+        // Handle the case where provider is null
+        // You can throw an error, return a default value, or handle it as per your requirements
+        throw new Error('Provider is null');
+      }
+      const nftContract = new ethers.Contract(contract.address, contract.abi, provider);
+    
+      let maxQuantity = 0;
+    
+      // check invite limit
+      let invite = await nftContract.invites(ethers.constants.HashZero);
+      let limit = invite['limit']; // Access the 'limit' value directly
+    
+      // Convert the 'limit' value to a number using parseInt or Number
+      let limitNumber = parseInt(limit);
+      // Or: let limitNumber = Number(limit);
+    
+      let currentBalance = await nftContract.balanceOf(signer.getAddress());
+      maxQuantity = limitNumber - currentBalance;
+    
+      // check max batch size
+      let config = await nftContract.config();
+      let maxBatch = config['maxBatchSize'];
+      maxQuantity = maxQuantity < maxBatch? maxQuantity: maxBatch;
+    
+      // check contract max supply
+      let maxSupply = config['maxSupply'];
+      let curSupply = await nftContract.totalSupply();
+      let diff = maxSupply - curSupply;
+    
+      maxQuantity = maxQuantity < diff? maxQuantity: diff;
+      return maxQuantity
     }
-  } finally {
-    setMintLoading(false);
-  }
-};
-
-const onAllowMintClick = async () => {
-  try {
-    setMintLoading(true);
-    if (!allowMint) {
-      throw new Error('mint function is not defined');
+    
+    // mint from public invite list
+    async function mintPublic(quantity, callback) {
+      const signer = await connect();
+      const nftContract = new ethers.Contract(contract.address, contract.abi, signer);
+    
+      if(quantity > await getMaxQuantity()) {
+        console.log('Max quantity exceeded');
+        callback(false);
+        return
+      }
+    
+      let invite = await nftContract.invites(ethers.constants.HashZero);
+    
+      let price = (invite['price'] * quantity).toString();
+      let auth = [ethers.constants.HashZero, []];
+      let affiliate = ethers.constants.AddressZero;
+      let affiliateSigner = ethers.constants.HashZero;
+    
+      let estimatedGas = 0;
+      try {
+        const estimatedGasFromContract = await nftContract.estimateGas.mint(
+          auth, quantity, affiliate, affiliateSigner, {value: price, gasLimit: 0 });
+        estimatedGas = estimatedGasFromContract.toNumber();
+      } catch (error) {
+        console.log('User has insufficient funds for mint');
+        console.log(error);
+      }
+    
+      try {
+        const tx = await nftContract.mint(auth, quantity, affiliate, affiliateSigner, {value: price, gasLimit: estimatedGas });
+        console.log(`Transaction hash: ${tx.hash}`);
+    
+        const receipt = await tx.wait();
+        console.log(`Transaction confirmed in block ${receipt.blockNumber}`);
+        console.log(`Gas used: ${receipt.gasUsed.toString()}`);
+        callback(true);
+      } catch (error) {
+        console.log('rejected mint');
+        console.log(error);
+        callback(false)
+      }
     }
-    const tx = await allowMint();
-    const receipt = await tx.wait();
-    console.log('TX receipt', receipt);
-    // @ts-ignore
-    const mintedTokenId = await receipt.events[0].args[2].toString();
-    setMintedTokenId(mintedTokenId);
-  } catch (error) {
-    console.error(error);
-    if (mintError) {
-      console.error(mintError);
-    }
-  } finally {
-    setMintLoading(false);
-  }
-};
 
-
+    const handleMintPublicClick = async () => {
+      // Call the mintPublic function and handle the result
+      await mintPublic(quantity, (success) => {
+        if (success) {
+          // Handle successful minting
+          console.log('Minting successful');
+        } else {
+          // Handle failed minting
+          console.log('Minting failed');
+        }
+      });
+    };
 
 
 const { data: totalSupplyData }: any = useContractRead({
@@ -167,40 +192,15 @@ const togglePlay = () => {
   
   <div className="main">
   <h1>{totalMinted} / 1333</h1>
-  {mounted && isConnected && address &&(
-    <button 
-    className='button'
-    onClick={() => onMintClick?.()}
-    >
-      Mint Ξ0.01
+  {mounted && isConnected &&(
+    <><h3>Flower Banners</h3><p>Click the button below to mint</p><input type="number" id="quantity" min={1} />
+   <button className="button" onClick={handleMintPublicClick}>
+      Mint Now
     </button>
+            </>
     
   )}
-  {mounted && isConnected && address &&(
-    <button 
-    className='button'
-    onClick={() => onAllowMintClick?.()}
-    >
-      Allow List
-    </button>
-    
-  )}
-  {mintLoading && <p>Minting... please wait</p>}
-  {mintError && (
-        <p>⛔️ Mint unsuccessful!</p>
-      )}
-{mintedTokenId && (
-        <p>
-          Success! View your Hooligan {' '}
-          <a
-            href="https://opensea.io/assets/ethereum/0x3664CCec2ce76e2921A6f479882baeB4ada4D6A9/{(mintedTokenId)}"
-            color='orange'
-          >
-            here!
-          </a>
-        </p>
-      )}
-
+  
 <br />
 <p>Mint on <a href="https://www.scatter.art/flower-banners" target="_blank" rel="noreferrer">Scatter.art</a> 
 <br/> </p>

@@ -34,36 +34,47 @@ text-decoration: underline;
 .main {
 border-radius: 25px;
 overflow: hidden;
-background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid #b1b1b1 ;
+background-color: rgba(255, 255, 255, 0.75);
+  border: 2px solid #e5e5e5 ;
 width: 50%;
-padding: 16px 16px;
+padding: 10px;
+margin: 20px;
+position: relative;
+padding: 9px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .mintLinks{
-  background-color: rgba(255, 255, 255, 0.5);
-  border: 1px solid #b1b1b1 ;
+  background-color: rgba(255, 255, 255, 0.75);
+  border: 2px solid #e5e5e5 ;
   width: 200px;
   margin-top: 25px;
   border-radius: 25px;
+  position: relative;
+padding: 9px;
+box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
 }
 
 
 .button {
   width: 150px;
-	height: 50px;
+	height: 30px;
 	cursor: pointer;
-	background: #333;
-	margin: 10px;
+	background: rgba(255, 255, 255, 0.5);
+	margin: 15px;
 	border: none;
-	border-radius: 10px;
-	box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #444, inset -5px -5px 10px #222;
+	border-radius: 25px;
+	box-shadow: -5px -5px 10px #f1f1f1, 5px 5px 10px #a3a3a3, inset 5px 5px 10px #f1f1f1, inset -5px -5px 10px #a3a3a3;
 	color: #222;
 	font-size: 16px;
+  cursor: pointer;
+  justify-content: center;
+  transition: .15s;
 }
 
 .button:hover {
-  box-shadow: -5px -5px 15px #444, 5px 5px 15px #222, inset 5px 5px 10px #222, inset -5px -5px 10px #444;
+  box-shadow: -5px -5px 10px #f1f1f1, 5px 5px 10px #a3a3a3, inset 5px 5px 10px #a3a3a3, inset -5px -5px 10px #f1f1f1;
 	font-size: 15px;
 	transition: 500ms;
 }
