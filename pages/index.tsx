@@ -175,56 +175,6 @@ const togglePlay = () => {
   }, []);
 
 
-  const [ownedTokenIds, setOwnedTokenIds] = useState<number[]>([]);
-const [ownedImageUrls, setOwnedImageUrls] = useState<string[]>([]);
-const ABI = require('../pages/abi/flwrs.json');
-
-useEffect(() => {
-  const web3 = new Web3(Web3.givenProvider);
-  const contract = new web3.eth.Contract(ABI, config.address);
-
-  async function fetchNftIds() {
-    const nftCount = await contract.methods.balanceOf(address).call();
-    const ids = [];
-    for (let i = 0; i < nftCount; i++) {
-      const id = await contract.methods.tokenOfOwnerByIndex(address, i).call();
-      ids.push(id);
-    }
-    setOwnedTokenIds(ids);
-  }
-
-  async function fetchOwnedImageUrls() {
-    const urls: string[] = [];
-    for (let i = 0; i < ownedTokenIds.length; i++) {
-      const tokenUriWithIpfsGateway = `https://ipfs.io/ipfs/bafybeifvtmexmkwgzexrrnprilxw3ngyuwpvzyoico5ba5qylavnpnqata/${ownedTokenIds[i]}`;
-      const response = await fetch(tokenUriWithIpfsGateway);
-      const json = await response.json();
-      urls.push(json.image);
-    }
-    setOwnedImageUrls(urls);
-  }
-
-  fetchNftIds();
-  fetchOwnedImageUrls();
-}, [address, ABI, config.address, ownedTokenIds]);
-
-const ownedImages = ownedImageUrls.slice(0).map((url, index) => (
-  <div className="gallery-img" key={`image_${index}`} >
-    <img 
-      alt={`#${index+1}`} 
-      src={`https://ipfs.io/ipfs/${url.replace('ipfs://', '')}`}
-      onClick={(e) => {
-        const modal = document.getElementById("gallery") as HTMLImageElement;
-        const modalImg = document.getElementById("galimg") as HTMLImageElement;
-        const captionText = document.getElementById("caption") as HTMLImageElement;
-        modal.style.display = "block";
-        modalImg.src = (e.target as HTMLImageElement).src;
-        captionText.innerHTML = (e.target as HTMLImageElement).alt;
-      }}
-    />
-  </div>
-));
-
 
   return (
     <>
@@ -261,11 +211,6 @@ const ownedImages = ownedImageUrls.slice(0).map((url, index) => (
   </div>
   </center>
 
-  {mounted && isConnected && address&&(
-                <div className='gallery-container' style={{ marginBottom: 15 }}>
-                  { ownedImages }
-                    </div>  
-            )}
 
   <center>
     <div
