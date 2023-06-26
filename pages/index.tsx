@@ -159,7 +159,7 @@ const togglePlay = () => {
   }
 };
 
-  const videoUrl = "none";
+  const videoUrl = "https://itsnota.club/pllntrs/web-bg.mp4";
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
