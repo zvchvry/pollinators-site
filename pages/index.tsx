@@ -194,7 +194,7 @@ const togglePlay = () => {
   <div className="main">
     <div className="desc">
       <>
-      <p>Immerse yourself in a captivating world where stunning flowers and graceful pollinators unite. Flower Banners is an NFT project expanding on the <a href='https://opensea.io/collection/the-pollinators'>The Pollinators</a> collection. Combining breathtaking flower photographs with the delicate dance of the pollinators, these unique banners offer an enchanting celebration of nature&apos;s wonders.</p>
+      <p>Immerse yourself in a captivating world where stunning flowers and graceful pollinators unite. Flower Banners is an NFT project expanding on the <a href='https://opensea.io/collection/the-pollinators' target='_blank' rel="noreferrer" >The Pollinators</a> collection. Combining breathtaking flower photographs with the delicate dance of the pollinators, these unique banners offer an enchanting celebration of nature&apos;s wonders.</p>
 
       </>
   </div>
