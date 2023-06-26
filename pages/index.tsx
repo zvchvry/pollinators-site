@@ -13,12 +13,9 @@ const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0);
   const { isConnected } = useAccount();
   
-
-
-   
-   
-  const provider = typeof window !== 'undefined' ? new ethers.providers.Web3Provider(window.ethereum, "any") : null;
-  const address = "0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D" //
+  const provider = typeof window !== 'undefined' ? new ethers.providers.Web3Provider(window['ethereum'], "any") : null;
+  
+  const address = "0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D"
     
     const { config } = usePrepareContractWrite({
       address,
@@ -74,7 +71,7 @@ const Home: NextPage = () => {
     }
     
     // mint from public invite list
-    async function mintPublic(quantity, callback) {
+    async function mintPublic(quantity: number, callback: (success: boolean) => void) {
       const signer = await connect();
       const nftContract = new ethers.Contract(contract.address, contract.abi, signer);
     
@@ -91,7 +88,7 @@ const Home: NextPage = () => {
       let affiliate = ethers.constants.AddressZero;
       let affiliateSigner = ethers.constants.HashZero;
     
-      let estimatedGas = 0;
+      let estimatedGas = 200000;
       try {
         const estimatedGasFromContract = await nftContract.estimateGas.mint(
           auth, quantity, affiliate, affiliateSigner, {value: price, gasLimit: 0 });
@@ -117,6 +114,7 @@ const Home: NextPage = () => {
     }
 
     const handleMintPublicClick = async () => {
+      const quantity = 1;
       // Call the mintPublic function and handle the result
       await mintPublic(quantity, (success) => {
         if (success) {
@@ -191,7 +189,7 @@ const togglePlay = () => {
   <div className="main">
   <h1>{totalMinted} / 1333</h1>
   {mounted && isConnected &&(
-    <><h3>Flower Banners</h3><p>Click the button below to mint</p><input type="number" id="quantity" min={1} />
+    <><h3>Flower Banners</h3><p>Click the button below to mint</p>
    <button className="button" onClick={handleMintPublicClick}>
       Mint Now
     </button>
