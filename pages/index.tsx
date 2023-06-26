@@ -180,7 +180,7 @@ const togglePlay = () => {
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="icon" type="image/png" href="/favicon.ico/" />
+
   <title>POLLINATORS</title>
   <meta name="description" content="Pollinators NFT & Flower Banners" />
   <div className="loader-wrapper">
