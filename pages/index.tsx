@@ -249,7 +249,7 @@ const togglePlay = () => {
           alt="etherscan"
         />
       </a>
-
+<p>Copyleft (ɔ) under the <a href="https://viralpubliclicense.org/">VIRAL PUBLIC LICENSE</a></p>
    
     </div>
   </center>
