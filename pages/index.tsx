@@ -4,7 +4,6 @@ import abi from '../pages/abi/flwrs.json';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import { ethers } from 'ethers';
-import { Html, Head } from 'next/document';
 
 
 const Home: NextPage = () => {
