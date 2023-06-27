@@ -4,6 +4,7 @@ import abi from '../pages/abi/flwrs.json';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
 import { ethers } from 'ethers';
+import { Html, Head } from 'next/document';
 
 
 const Home: NextPage = () => {
@@ -176,7 +177,9 @@ const togglePlay = () => {
 
 
   return (
+    
     <>
+    
   <meta charSet="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
