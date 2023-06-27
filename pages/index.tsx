@@ -1,5 +1,5 @@
 import type { NextPage } from 'next';
-import { useAccount, usePrepareContractWrite, useContractWrite, useContractRead } from 'wagmi'
+import { useAccount, usePrepareContractWrite, useContractRead } from 'wagmi'
 import abi from '../pages/abi/flwrs.json';
 import { useState, useEffect, useRef } from 'react';
 import React from 'react';
