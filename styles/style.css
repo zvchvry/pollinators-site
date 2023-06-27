@@ -192,7 +192,7 @@ button.play-pause-btn .play-icon:before {
 }
 
 button.play-pause-btn .pause-icon:before {
-  content: "⏽︎⏽︎"; /* Font Awesome pause icon */
+  content: "II"; /* Font Awesome pause icon */
 }
 
 
