@@ -19,12 +19,12 @@ const Home: NextPage = () => {
     
     const { config } = usePrepareContractWrite({
       address,
-      abi,
-     
+      abi
     })
+    
     const contract = {
-      address: address,
-      abi: abi,
+      address,
+      abi
     };
     
     async function connect() {
