@@ -13,8 +13,8 @@ const Home: NextPage = () => {
   const [totalMinted, setTotalMinted] = React.useState(0);
   const { isConnected } = useAccount();
   
-  const provider = typeof window !== 'undefined' ? new ethers.providers.Web3Provider(window.ethereum) : null;
-  
+  const provider = typeof window !== 'undefined' ? new ethers.providers.Web3Provider(window.ethereum, "any") : null;
+
   const address = "0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D"
     
     const { config } = usePrepareContractWrite({
