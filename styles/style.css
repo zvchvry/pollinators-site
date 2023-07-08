@@ -187,12 +187,11 @@ button.play-pause-btn.playing .pause-icon {
 }
 
 button.play-pause-btn .play-icon:before {
-  content: "►"; /* Font Awesome play icon */
-  margin-left: 2px;
+  content: "▶️"; /* Font Awesome play icon */
 }
 
 button.play-pause-btn .pause-icon:before {
-  content: "II"; /* Font Awesome pause icon */
+  content: "⏸"; /* Font Awesome pause icon */
 }
 
 
