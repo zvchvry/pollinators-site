@@ -198,11 +198,11 @@ button.play-pause-btn .pause-icon:before {
 
 @media only screen and (max-width: 600px) {
   button.play-pause-btn .play-icon:before {
-    margin: -3px;  
+    margin: -6px;  
   }
   
   button.play-pause-btn .pause-icon:before {
-margin: -3px;  
+margin: -6px;  
 }
 }
 
