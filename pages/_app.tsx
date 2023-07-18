@@ -6,6 +6,7 @@ import type { AppProps } from 'next/app';
 import { configureChains, createClient, WagmiConfig } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
+import Head from 'next/head';
 import
  { Analytics } 
 from
@@ -36,6 +37,14 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <WagmiConfig client={wagmiClient}>
       <RainbowKitProvider chains={chains} theme={darkTheme()}>
+        <Head>
+        <meta charSet="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta httpEquiv="X-UA-Compatible" content="ie=edge" />
+   <link rel="icon" type="image/png" href="/favicon.ico" />
+  <title>POLLINATORS</title>
+  <meta name="description" content="Pollinators NFT & Flower Banners" />
+        </Head>
       <center>
     <div id="header">
     <ConnectButton />
