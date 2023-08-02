@@ -215,8 +215,15 @@ const togglePlay = () => {
   )}
   
 <br />
-<p>Connect to mint or mint on <a href="https://www.scatter.art/flower-banners" target="_blank" rel="noreferrer">Scatter.art</a> 
-<br/> </p>
+<p>Connect to mint or mint on <a href="https://www.scatter.art/flower-banners" target="_blank" rel="noreferrer">Scatter.art</a>.
+<br/> 
+Check out the Pollinators Market for secondary sales.</p>
+
+<div className="banner"><a href='https://market.pollinators.art'><img
+          src="https://itsnota.club/pllntrs/market-ad.png"
+          alt="Pollinators Market"
+        /></a>
+        </div>
 
 
   </div>
