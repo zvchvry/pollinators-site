@@ -203,7 +203,7 @@ const togglePlay = () => {
       </>
   </div>
 
-  <h1>{totalMinted} / 1333</h1>
+  <h1>{totalMinted} / 333</h1>
   {mounted && isConnected &&(
     <>
     <p>Click the button below to mint</p>
