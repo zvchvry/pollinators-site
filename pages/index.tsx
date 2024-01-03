@@ -206,10 +206,7 @@ const togglePlay = () => {
   <h1>{totalMinted} / 333</h1>
   {mounted && isConnected &&(
     <>
-    <p>Click the button below to mint</p>
-   <button className="button" onClick={handleMintPublicClick}>
-      Mint Now
-    </button>
+   
             </>
     
   )}
