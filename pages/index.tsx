@@ -148,7 +148,7 @@ const Home: NextPage = () => {
     setIsPlaying(!isPlaying)
   }
 
-  const videoUrl = 'https://itsnota.club/pllntrs/web-bg.mp4'
+  const videoUrl = '/pllntrs/web-bg.mp4'
   const videoRef = useRef<HTMLVideoElement>(null)
 
   useEffect(() => {
@@ -170,7 +170,7 @@ const Home: NextPage = () => {
       <center>
         <div className="main">
           <div className="banner">
-            <img src="https://itsnota.club/pllntrs/web-banner.gif" alt="Banners" />
+            <img src="/pllntrs/web-banner.gif" alt="Banners" />
           </div>
 
           <div className="desc">
@@ -195,8 +195,6 @@ const Home: NextPage = () => {
 
           {mounted && isConnected && (
             <>
-              {/* Add your mint UI wherever you want */}
-              <button onClick={handleMintPublicClick}>Mint 1</button>
             </>
           )}
 
@@ -205,7 +203,7 @@ const Home: NextPage = () => {
 
           <div className="banner">
             <a href="https://market.pollinators.art" target="_blank" rel="noreferrer">
-              <img src="https://itsnota.club/pllntrs/market-ad.png" alt="Pollinators Market" />
+              <img src="/pllntrs/market-ad.png" alt="Pollinators Market" />
             </a>
           </div>
 
@@ -215,7 +213,7 @@ const Home: NextPage = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <img src="https://itsnota.club/pllntrs/fb-sudoswap.png" alt="Flower Banners on Sudoswap" />
+              <img src="/pllntrs/fb-sudoswap.png" alt="Flower Banners on Sudoswap" />
             </a>
           </div>
         </div>
@@ -224,17 +222,17 @@ const Home: NextPage = () => {
       <center>
         <div className="mintLinks">
           <a href="https://opensea.io/collection/flower-banners" target="_blank" rel="noreferrer">
-            <img src="https://itsnota.club/imgs/opensea.svg" style={{ width: 25, margin: 15 }} alt="OpenSea" />
+            <img src="/imgs/opensea.svg" style={{ width: 25, margin: 15 }} alt="OpenSea" />
           </a>
           <a href="https://twitter.com/Pollinators_NFT" target="_blank" rel="noreferrer">
-            <img src="https://itsnota.club/imgs/twitter-logo.png" style={{ width: 25, margin: 15 }} alt="Twitter" />
+            <img src="/imgs/twitter-logo.png" style={{ width: 25, margin: 15 }} alt="Twitter" />
           </a>
           <a
             href="https://etherscan.io/address/0xD6d503f0f788f3c2D553bE0b5460Ba4E2798044D"
             target="_blank"
             rel="noreferrer"
           >
-            <img src="https://itsnota.club/imgs/etherscan.svg" style={{ width: 25, margin: 15 }} alt="etherscan" />
+            <img src="/imgs/etherscan.svg" style={{ width: 25, margin: 15 }} alt="etherscan" />
           </a>
           <p>
             Copyleft (ɔ) under the <a href="https://viralpubliclicense.org/">VIRAL PUBLIC LICENSE</a>
@@ -247,7 +245,7 @@ const Home: NextPage = () => {
       </div>
 
       <audio
-        src="https://itsnota.club/pllntrs/born2flyOPD.mp3"
+        src="/pllntrs/born2flyOPD.mp3"
         ref={audioRef}
         loop
         onEnded={() => setIsPlaying(false)}
