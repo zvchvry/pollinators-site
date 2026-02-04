@@ -11,18 +11,16 @@
   },
   "dependencies": {
     "@rainbow-me/rainbowkit": "^2.2.10",
+    "@tanstack/react-query": "^5.90.20",
     "@vercel/analytics": "^1.0.1",
     "ethers": "^6.16.0",
     "next": "^16.1.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "usehooks-ts": "^2.9.1",
+    "viem": "^2",
     "wagmi": "^2.19.5",
-    "web3": "^4.16.0",
-        "viem": "^2",
-        "@tanstack/react-query": "^5"
-
-
+    "web3": "^4.16.0"
   },
   "devDependencies": {
     "@types/node": "17.0.45",
